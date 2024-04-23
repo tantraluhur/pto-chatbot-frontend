@@ -21,3 +21,25 @@ body {
 .slider {
   width: 100%;
 }
+
+
+.textarea-scrollbar::-webkit-scrollbar {
+
+  display: none;
+
+}
+
+.textarea-scrollbar::-webkit-scrollbar-track {
+  z-index: -1;
+  background-color: transparent;
+  border-radius: 9999px;
+}
+
+.textarea-scrollbar::-webkit-scrollbar-thumb {
+  z-index: -1;
+  --tw-border-opacity: 1;
+  background-color: hsla(0, 0%, 89%, .8);
+  border-color: rgba(255,255,255, var(--tw-border-opacity));
+  border-radius: 9999px;
+  border-width: 1px;
+}
