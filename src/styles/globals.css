@@ -43,3 +43,11 @@ body {
   border-radius: 9999px;
   border-width: 1px;
 }
+
+.textarea-scrollbar {
+  transition: height 2s, border-radius 0.1s;
+}
+
+button.mob {
+  cursor: pointer;
+}
