@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -50,4 +54,8 @@ body {
 
 button.mob {
   cursor: pointer;
+}
+
+.pto-sidebar {
+  transition: width 0.3s;
 }
