@@ -25,11 +25,12 @@ export const ChatInput = () => {
 
     
     return (
-        <div className="relative rounded-lg bottom-0"  ref={containerRef}>
+        <div className="relative rounded-lg bottom-0 w-full"  ref={containerRef}>
           <textarea
             ref={textAreaRef}
             placeholder="Enter a prompt here..."
-            className="textarea-scrollbar text-sm max-h-40 w-full p-3 pr-14 resize-none focus:outline-none focus:ring-0 border-[1px] rounded-full border-black"
+            className="textarea-scrollbar font-semibold text-sm lg:text-base max-h-40 w-full p-3 pr-14 resize-none 
+            focus:outline-none focus:ring-0 border-[1px] rounded-full border-black"
             onChange={(e) => setText(e.target.value)}
             rows={1}
             style={{

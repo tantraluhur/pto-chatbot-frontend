@@ -1,6 +1,6 @@
 import axios from "axios";
 import Image from "next/image";
-import { ChatInput, QuestionBox, SideBar, Greet } from "./components"
+import { ChatInput, QuestionBox, SideBar, Greet, UserBubbleChat, BotBubbleChat } from "./components"
 import { useEffect, useState } from "react";
 
 export const ChatSection = () => {
@@ -12,12 +12,14 @@ export const ChatSection = () => {
 
     return (
         <div className="h-screen">
-            <div>
-                <SideBar
-                isOpen={isOpen} 
-                setIsOpen={setIsOpen}
-                />
-                <div className="p-5 h-full">
+            <div className="h-full w-full sm:flex">
+                <div className="w-1/3">
+                    <SideBar
+                    isOpen={isOpen} 
+                    setIsOpen={setIsOpen}
+                    />
+                </div>
+                <div className="p-5 h-full w-full flex flex-col">
                     <div className="flex gap-4 ml-2 mt-2">
                         <button onClick={handleOpenSideBar} className="sm:hidden">
                             <Image 
@@ -27,16 +29,26 @@ export const ChatSection = () => {
                             alt="arrow-right"
                             />
                         </button>
-                        <div className="font-bold text-lg">
+                        <div className="font-bold text-lg sm:text-xl">
                             PTO Chatbot
                         </div>
                     </div>
-                    <div className="flex justify-center items-center h-3/5">
+                    <div className="flex justify-center items-center h-3/4 hidden">
                         <Greet/>
                     </div>
-                    <div className="flex justify-center items-center">
-                        <div className="w-10/12 absolute bottom-0 mb-4 grid gap-4 sm:mb-8">
-                            <div className="grid grid-cols-2 gap-2 sm:flex sm:justify-center sm:items-cen">
+                    <div className="h-3/4 mt-4">
+                        <div className="w-full h-full flex flex-col gap-6">
+                            <div className="flex justify-end">
+                                <UserBubbleChat/>
+                            </div>
+                            <div className="flex justify-start gap-2">
+                                <BotBubbleChat />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex justify-center items-center w-full sm:mt-auto">
+                        <div className="w-full grid gap-6">
+                            <div className="grid grid-cols-2 gap-2 sm:flex sm:justify-center sm:items-center">
                                 <QuestionBox message="Bagaimana kategorisasi tingkat keamanan siber?"></QuestionBox>
                                 <QuestionBox message="Apa yang dimaksud dengan laporan insiden siber?"></QuestionBox>
                                 <QuestionBox message="Apa yang dimaksud dengan keamanan siber?"></QuestionBox>

@@ -7,8 +7,8 @@ type QuestionBoxProps = {
 export const QuestionBox: React.FC<QuestionBoxProps> = ( {message} ) => {
     
     return (
-        <div className="border-[1px] border-black rounded-2xl h-auto flex">
-            <div className="m-2 mr-6 text-xs sm:text-sm">
+        <div className="border-[1px] border-black rounded-2xl h-auto flex w-auto font-medium">
+            <div className="m-2 text-xs sm:text-sm lg:text-base">
                 {message}
             </div>
         </div>
