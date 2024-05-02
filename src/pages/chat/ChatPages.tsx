@@ -33,16 +33,19 @@ export const ChatSection = () => {
                             PTO Chatbot
                         </div>
                     </div>
-                    <div className="flex justify-center items-center h-3/4 hidden">
-                        <Greet/>
-                    </div>
-                    <div className="h-3/4 mt-4">
-                        <div className="w-full h-full flex flex-col gap-6">
-                            <div className="flex justify-end">
-                                <UserBubbleChat/>
-                            </div>
-                            <div className="flex justify-start gap-2">
-                                <BotBubbleChat />
+                    <div className="h-full mt-4">
+                        {/* Ganti ganti hiddennya tergantung ada chat atau ngga */}
+                        <div className="flex justify-center items-center h-full hidden">
+                            <Greet/>
+                        </div>
+                        <div className="h-full w-full">
+                            <div className="flex flex-col gap-6">
+                                <div className="flex justify-end">
+                                    <UserBubbleChat/>
+                                </div>
+                                <div className="flex justify-start gap-2">
+                                    <BotBubbleChat />
+                                </div>
                             </div>
                         </div>
                     </div>
