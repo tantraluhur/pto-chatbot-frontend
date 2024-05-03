@@ -22,11 +22,14 @@ export default function App(props: AppProps) {
 
   return (
     <AppCacheProvider {...props}>
-      <Head>...</Head>
+      <Head>
+        <title>
+          PTO Chatbot
+        </title>
+      </Head>
       <ThemeProvider theme={theme}>
         <main className={nunito.className}>
           <Component {...pageProps} />
-
         </main>
       </ThemeProvider>
     </AppCacheProvider>

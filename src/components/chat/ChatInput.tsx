@@ -6,6 +6,10 @@ export const ChatInput = () => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
+    const sendMessage = (message: string) => {
+      
+    }
+
     useEffect(() => {
         const textArea = textAreaRef.current;
         const container = containerRef.current;
@@ -22,7 +26,6 @@ export const ChatInput = () => {
             container.style.paddingBottom = textArea.offsetHeight - textArea.scrollHeight + 'px';
         }
     }, [text]);
-
     
     return (
         <div className="relative rounded-lg bottom-0 w-full"  ref={containerRef}>
