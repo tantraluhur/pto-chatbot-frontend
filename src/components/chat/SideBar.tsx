@@ -79,12 +79,11 @@ export const SideBar: React.FC<SideBarProps> = ( {isOpen, setIsOpen} ) => {
                             <Image 
                             width={1000}
                             height={1000}
-                            objectFit="cover"
                             src={"/images/vector-logout.png"}
                             alt="logout-button"
                             className="w-4 sm:w-5"
                             />
-                            <div className="font-bold truncate sm:text-lg">
+                            <div className="font-bold truncate sm:text-medium">
                                 Logout
                             </div>
                         </button>

@@ -52,6 +52,15 @@ body {
   transition: height 2s, border-radius 0.1s;
 }
 
+.chat-messages {
+  /* Hiding the scrollbar */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+  }
+}
+
 button.mob {
   cursor: pointer;
 }

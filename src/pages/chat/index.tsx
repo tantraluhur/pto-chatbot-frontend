@@ -1,7 +1,6 @@
 import axios from "axios";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ChatSection, SideBar } from "@/components/chat";
+import { ChatSection, SideBar, HeaderSection } from "@/components/chat";
 
 const ChatPages = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -20,19 +19,9 @@ const ChatPages = () => {
                     />
                 </div>
                 <div className="p-5 h-full w-full flex flex-col">
-                    <div className="flex gap-4 ml-2 mt-2">
-                        <button onClick={handleOpenSideBar} className="sm:hidden">
-                            <Image 
-                            width={18}
-                            height={30}
-                            src={"/images/vector-arrow-right.png"}
-                            alt="arrow-right"
-                            />
-                        </button>
-                        <div className="font-bold text-lg sm:text-xl">
-                            PTO Chatbot
-                        </div>
-                    </div>
+                    <HeaderSection 
+                    handleOpenSideBar={handleOpenSideBar}
+                    />
                     <ChatSection />
                 </div>
             </div>
