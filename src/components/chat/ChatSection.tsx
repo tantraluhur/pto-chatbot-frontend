@@ -9,6 +9,13 @@ export const ChatSection = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
+    const questionItem = [
+        "Bagaimana kategorisasi tingkat keamanan siber?",
+        "Apa yang dimaksud dengan laporan insiden siber?",
+        "Apa yang dimaksud dengan keamanan siber?",
+        "Apa yang dilakukan Bank untuk menjaga ketahanan siber?"
+    ]
+
     const sendMessage = (input: string) => {
         if (input.trim() === '') return;
         const newMessage: Message = { messageUser: input, typing: true };
@@ -19,7 +26,7 @@ export const ChatSection = () => {
         setTimeout(() => {
             setMessages(messages => {
                 const updatedMessages = messages.map((msg, idx) => 
-                    idx === messages.length - 1 ? { ...msg, messageBot: "Hello, how can I help?", typing: false } : msg
+                    idx === messages.length - 1 ? { ...msg, messageBot: "Hello! How can I assist you today?", typing: false } : msg
                 );
                 return updatedMessages;
                 });
@@ -62,10 +69,11 @@ export const ChatSection = () => {
                 <div className={`grid grid-cols-2 gap-2 ${messages.length==0? "" : "hidden sm:hidden"}
                 sm:flex sm:justify-center sm:items-center
                 `}>
-                    <QuestionBox message="Bagaimana kategorisasi tingkat keamanan siber?"></QuestionBox>
-                    <QuestionBox message="Apa yang dimaksud dengan laporan insiden siber?"></QuestionBox>
-                    <QuestionBox message="Apa yang dimaksud dengan keamanan siber?"></QuestionBox>
-                    <QuestionBox message="Apa yang dilakukan Bank untuk menjaga ketahanan siber?"></QuestionBox>
+                    {questionItem.map((item) => 
+                        <QuestionBox 
+                        message={item}
+                        sendMessage={sendMessage}/>
+                    )}
                 </div>
                 <ChatInput
                 sendMessage={sendMessage}
