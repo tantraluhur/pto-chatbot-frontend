@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -12,9 +14,16 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media (max-width:768px){
+  .grid{
+    flex-direction: column;
   }
 }
 
@@ -50,4 +59,13 @@ body {
 
 button.mob {
   cursor: pointer;
+}
+
+
+
+.nunito {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }

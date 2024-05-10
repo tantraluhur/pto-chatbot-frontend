@@ -9,22 +9,24 @@ export const CarouselSection = () => {
         "/images/login-icon3.png"
     ]
     return (
-        <div className='w-full rounded-xl bg-[#DCE7F0]'>
+        <div className='rounded-xl sm:rounded-l-xl sm:rounded-r-none bg-[#DCE7F0] shadow-xl md:shadow-none'>
             <Carousel
             navButtonsAlwaysInvisible={true}
             swipe={false}
             sx={{ overflowY: 'visible', overflowX: 'clip' }} 
+            className="h-full w-full"
 
             >
                 {
                     items.map( (item) => {
                         return (
-                            <div className='flex justify-center items-center'>
+                            <div className='md:pt-10 md:pb-10 flex justify-center items-center h-full w-full'>
                                 <Image 
-                                    width={450}
-                                    height={200}
+                                    width={300}
+                                    height={300}
                                     alt={item} 
                                     src={item}
+                                    className="w-3/5"
                                 />
                             </div>
                         )
