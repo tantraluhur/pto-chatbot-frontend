@@ -20,7 +20,7 @@ export const LoginForm = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleMouseDownPassword = (event) => {
+    const handleMouseDownPassword = (event: any) => {
         event.preventDefault();
     };
    
