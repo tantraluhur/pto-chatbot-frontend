@@ -2,7 +2,7 @@ import React from 'react';
 
 const Opening = () => { 
   return (
-    <div className = 'px-10 bg-gradient-to-r flex flex-wrap lg:bg-gradient-to-r from-cyan-700 content-center justify-center min-h-screen w-full lg:pt-10 sm:py-10'>
+    <div className = 'font-nunito  px-10 bg-gradient-to-r flex flex-wrap lg:bg-gradient-to-r from-cyan-700 content-center justify-center min-h-screen w-full lg:pt-10 sm:py-10'>
       <div className='bg-white sm:max-w-md px-12 py-14 w-auto lg:bg-white from-cyan-700 shadow-xl rounded-xl'> 
         <div className=''>
           <h1 className='font-bold pb-2'>Yesterday</h1> 

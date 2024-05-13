@@ -13,7 +13,7 @@ const LoginSection = () => {
 
   return (
 
-    <div className=' flex flex-wrap lg:bg-gradient-to-r from-cyan-700 content-center justify-center min-h-screen w-full pt-10 sm:py-10'>
+    <div className=' font-nunito flex flex-wrap lg:bg-gradient-to-r from-cyan-700 content-center justify-center min-h-screen w-full pt-10 sm:py-10'>
       <div className="bg-white rounded-xl md:shadow-lg w-4/5 h-full h-full ">
         <div className=" grid grid-cols-1 gap-4 ">
       {isMobile ? (

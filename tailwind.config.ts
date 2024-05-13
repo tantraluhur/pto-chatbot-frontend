@@ -33,8 +33,8 @@ const config: Config = {
         }
       },
       fontFamily: {
-        'nunito': [
-          ' "Nunito" '          
+        nunito: [
+           "Nunito Sans" , "sans-serif"          
         ],
       }
     }
