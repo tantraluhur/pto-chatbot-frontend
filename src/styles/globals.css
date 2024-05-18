@@ -16,9 +16,16 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media (max-width:768px){
+  .grid{
+    flex-direction: column;
   }
 }
 
@@ -68,3 +75,4 @@ button.mob {
 .pto-sidebar {
   transition: width 0.3s;
 }
+
