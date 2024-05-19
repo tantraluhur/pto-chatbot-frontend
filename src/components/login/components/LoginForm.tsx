@@ -20,14 +20,14 @@ export const LoginForm = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleMouseDownPassword = (event) => {
+    const handleMouseDownPassword = (event : any) => {
         event.preventDefault();
     };
    
     return (
         <section className="w-full h-full grid place-content-center">
             <div className="font-body flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-auto lg:py-0">
-                <div className="w-full bg-white rounded-lg md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <div className="w-full bg-white rounded-lg md:mt-0 sm:max-w-md xl:p-0">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8 flex flex-col-reverse gap-12 sm:flex-col">
                         <div className='flex justify-center items-center'>
                             <Image 
@@ -38,7 +38,7 @@ export const LoginForm = () => {
                             />
                         </div>
                         <div className='mt-auto bottom-0'>
-                            <h1 className="pb-5 text-xl text-center font-nunito font-bold leading-tight tracking-tight text-gray-900 md:text-xl dark:text-white">
+                            <h1 className="pb-5 text-xl text-center font-nunito font-bold leading-tight tracking-tight text-black">
                                 Welcome to PTO Chatbot
                             </h1>
                             <form className="space-y-4 md:space-y-6" action="#">
@@ -73,7 +73,13 @@ export const LoginForm = () => {
                                     <div className="flex items-start">
                                     </div>
                                     </div>
-                                <button type="submit" className="w-full text-white bg-primary-best hover:bg-primary-team focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium text-sm  rounded-3xl  py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</button>
+                                <button 
+                                type="submit" 
+                                className="w-full text-white 
+                                bg-primary-best hover:bg-primary-team focus:ring-4 focus:outline-none 
+                                font-medium text-sm  rounded-3xl  py-2.5 text-center ">
+                                        Login
+                                </button>
                             </form>
                             
                         </div>
