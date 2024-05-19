@@ -78,6 +78,10 @@ button.mob {
   transition: width 0.3s;
 }
 
+.gradient {
+  background: linear-gradient(to bottom right, #003A70 25%, #ffffff );
+}
+
 
 .nunito {
   font-family: "Nunito", sans-serif;

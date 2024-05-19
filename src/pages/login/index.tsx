@@ -19,7 +19,7 @@ const LoginSection = () => {
   const isMobile = !isDesktop && !isTablet;
 
   return (
-  <div className=' flex flex-wrap lg:bg-gradient-to-br from-[#003A70] content-center justify-center min-h-screen w-full pt-10 sm:py-10'>
+  <div className='gradient flex flex-wrap content-center justify-center min-h-screen w-full pt-10 sm:py-10'>
     <div className="bg-white rounded-xl md:shadow-lg w-4/6 h-full">
         <div className=" grid grid-cols-1 gap-4 h-full">
           {isMobile ? (
