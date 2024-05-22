@@ -3,6 +3,8 @@ import { EmblaOptionsType } from 'embla-carousel'
 import { DotButton, useDotButton } from './CarouselDotButton'
 import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
+import Autoplay from 'embla-carousel-autoplay'
+
 
 type PropType = {
   slides: string[]
@@ -11,7 +13,7 @@ type PropType = {
 
 export const CarouselSection: React.FC<PropType> = (props) => {
   const { slides, options } = props
-  const [emblaRef, emblaApi] = useEmblaCarousel(options)
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay({delay: 3000})])
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi)

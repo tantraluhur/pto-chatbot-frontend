@@ -1,8 +1,12 @@
 import "@/styles/globals.css";
+import 'react-toastify/dist/ReactToastify.css';
+
 import type { AppProps } from "next/app";
 import { AppCacheProvider } from '@mui/material-nextjs/v13-pagesRouter';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Lato, Nunito, Roboto } from 'next/font/google';
+import { ToastContainer } from "react-toastify";
+import { Nunito } from 'next/font/google';
+import { SessionProvider } from 'next-auth/react';
 import Head from "next/head";
 
 const nunito = Nunito({
@@ -28,9 +32,12 @@ export default function App(props: AppProps) {
         </title>
       </Head>
       <ThemeProvider theme={theme}>
-        <main className={nunito.className}>
-          <Component {...pageProps} />
-        </main>
+        <SessionProvider>
+          <main className={nunito.className}>
+            <Component {...pageProps} />
+          </main>
+        </SessionProvider>
+        <ToastContainer autoClose={1000} position="top-center" />
       </ThemeProvider>
     </AppCacheProvider>
   );

@@ -1,24 +1,59 @@
-import { Input } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
 import TextField from '@mui/material/TextField';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Image from 'next/image'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton'
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import {  signIn } from 'next-auth/react';
+import { toast } from 'react-toastify';
+import { useRouter } from "next/navigation"
+import { LoadingSpinner } from '@/components/loader';
+
+
 
 
 export const LoginForm = () => {
-    var items = [
-        "/images/mandiri-icon.png"
-    ]
+    const router = useRouter()
+
     // State to manage the visibility of the password
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+    });
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({
+          ...formData,
+          [name]: value
+        });
+      };
 
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        setIsLoading(true)
+        event.preventDefault();
+        const result = await signIn('credentials', {
+            redirect: false,
+            username: formData.username,
+            password: formData.password,
+        });
+
+        if (result?.error) {
+            setIsLoading(false)
+            toast.error("Incorrect username or password.")
+        } else {
+            router.push("/chat")
+            toast.success("Login Successful")
+        }
+    }
 
     const handleMouseDownPassword = (event : any) => {
         event.preventDefault();
@@ -38,21 +73,28 @@ export const LoginForm = () => {
                             />
                         </div>
                         <div className='mt-auto bottom-0'>
-                            <h1 className="pb-5 text-xl text-center font-nunito font-bold leading-tight tracking-tight text-black">
+                            <h1 className="pb-5 text-xl text-center font-bold text-black">
                                 Welcome to PTO Chatbot
                             </h1>
-                            <form className="space-y-4 md:space-y-6" action="#">
+                            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                             <div>
-                                <TextField id="user-ad" label="User AD" variant="standard" fullWidth/>
+                                <TextField id="user-ad" label="User AD"
+                                name="username"
+                                value={formData.username} 
+                                onChange={handleInputChange}
+                                variant="standard" fullWidth/>
                             </div>
                             <div>
                                 <TextField
                                     id="standard-password-input"
+                                    name="password"
                                     label="Password"
                                     type={showPassword ? 'text' : 'password'}
                                     autoComplete="current-password"
                                     variant="standard"
                                     fullWidth
+                                    value={formData.password}
+                                    onChange={handleInputChange}
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
@@ -77,8 +119,12 @@ export const LoginForm = () => {
                                 type="submit" 
                                 className="w-full text-white 
                                 bg-primary-best hover:bg-primary-team focus:ring-4 focus:outline-none 
-                                font-medium text-sm  rounded-3xl  py-2.5 text-center ">
-                                        Login
+                                font-medium text-sm  rounded-3xl  py-2.5 text-center disabled:bg-black disabled:bg-opacity-20"
+                                disabled={isLoading}>
+                                        {
+                                            isLoading? 
+                                            <LoadingSpinner/>: <div>Loading</div>
+                                        }
                                 </button>
                             </form>
                             

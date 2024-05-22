@@ -1,5 +1,8 @@
 import Image from "next/image"
 import { useEffect, useRef } from "react"
+import { signOut } from 'next-auth/react';
+import { useRouter } from "next/router";
+
 
 type SideBarProps = {
     isOpen : boolean
@@ -7,8 +10,12 @@ type SideBarProps = {
 }
 
 export const SideBar: React.FC<SideBarProps> = ( {isOpen, setIsOpen} ) => {
+    const router = useRouter()
     const sideBarRef = useRef<HTMLDivElement>(null)
 
+    const handleLogout = () => {
+        signOut({callbackUrl: '/', redirect:true})
+    }
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -40,7 +47,7 @@ export const SideBar: React.FC<SideBarProps> = ( {isOpen, setIsOpen} ) => {
                             className="w-5 sm:w-7"
                             />
                         </button>
-                        <button className="mt-10 flex gap-4 w-full">
+                        <button className="mt-10 flex gap-4 w-full hover:bg-white hover:bg-opacity-10 hover:rounded-lg p-2">
                             <Image 
                             width={1000}
                             height={1000}
@@ -53,29 +60,30 @@ export const SideBar: React.FC<SideBarProps> = ( {isOpen, setIsOpen} ) => {
                             </div>
                         </button>
                         <div className="mt-10 grid gap-2 text-sm sm:text-base">
-                            <div className="text-white font-bold truncate">
+                            <div className="text-white font-bold truncate pl-2">
                                 Yesterday
                             </div>
-                            <button className="text-white truncate text-left">
+                            <button className="text-white truncate text-left hover:bg-white hover:bg-opacity-10 hover:rounded-lg p-2">
                                 Apa yang dilakukan Bank
                             </button>
-                            <button className="text-white truncate text-left">
+                            <button className="text-white truncate text-left hover:bg-white hover:bg-opacity-10 hover:rounded-lg p-2">
                                 Apa yang dimaksud dengan
                             </button>
                         </div>
                         <div className="mt-10 grid gap-2 text-sm sm:text-base">
-                            <div className="text-white font-bold truncate">
+                            <div className="text-white font-bold truncate pl-2">
                                 Previous 7 days
                             </div>
-                            <button className="text-white truncate text-left">
+                            <button className="text-white truncate text-left hover:bg-white hover:bg-opacity-10 hover:rounded-lg p-2">
                                 Apa yang dilakukan Bank
                             </button>
-                            <button className="text-white truncate text-left">
+                            <button className="text-white truncate text-left hover:bg-white hover:bg-opacity-10 hover:rounded-lg p-2">
                                 Apa yang dimaksud dengan
                             </button>
                         </div>
                         <button className="mt-auto w-full bottom-0 flex justify-center items-center gap-2 border-[1px]
-                        border-[#FFFFFF57] rounded-full text-white h-10 text-base sm:h-12">
+                        border-[#FFFFFF57] rounded-full text-white h-10 text-base sm:h-12 
+                        hover:bg-[#FFFFFF57] p-2" onClick={handleLogout}>
                             <Image 
                             width={1000}
                             height={1000}

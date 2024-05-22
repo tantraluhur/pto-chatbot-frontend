@@ -26,7 +26,7 @@ export const ChatSection = () => {
         setTimeout(() => {
             setMessages(messages => {
                 const updatedMessages = messages.map((msg, idx) => 
-                    idx === messages.length - 1 ? { ...msg, messageBot: "Hello! How can I assist you today?", typing: false } : msg
+                    idx === messages.length - 1 ? { ...msg, messageBot: `Hello`, typing: false } : msg
                 );
                 return updatedMessages;
                 });

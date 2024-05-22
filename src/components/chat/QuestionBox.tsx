@@ -8,7 +8,8 @@ type QuestionBoxProps = {
 export const QuestionBox: React.FC<QuestionBoxProps> = ( {message, sendMessage} ) => {
     
     return (
-        <button className="border-[1px] border-black rounded-2xl h-auto flex w-auto font-medium text-start" onClick={() => sendMessage(message)}>
+        <button className="border-[1px] border-black rounded-2xl h-auto flex w-auto font-medium text-start
+        hover:bg-black hover:bg-opacity-15 " onClick={() => sendMessage(message)}>
             <div className="m-2 text-xs sm:text-sm lg:text-base">
                 {message}
             </div>
