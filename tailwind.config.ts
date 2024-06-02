@@ -15,9 +15,20 @@ const config: Config = {
         'gradient-to-l': 'linear-gradient(to left, #003A70, #FFFFFF)',
       },
       animation: {
-        "pulse-fast" : "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+        "pulse-fast" : "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        'rotate-right': 'rotate-right 0.5s forwards',
+        'rotate-left': 'rotate-left 0.5s forwards',
       },
-      
+      keyframes: {
+        'rotate-right': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(180deg)' },
+        },
+        'rotate-left': {
+          '0%': { transform: 'rotate(180deg)' },
+          '100%': { transform: 'rotate(0deg)' },
+        },
+      },
       colors: { 
         
         primary: {

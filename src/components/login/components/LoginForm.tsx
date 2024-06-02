@@ -4,22 +4,26 @@ import Image from 'next/image'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton'
-import React, { ChangeEvent, FormEvent, useState } from 'react';
-import {  signIn } from 'next-auth/react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import {  getSession, signIn, useSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import { useRouter } from "next/navigation"
 import { LoadingSpinner } from '@/components/loader';
+import { Client } from '@/redux';
+import { ExtendedUser } from '@/lib/authOptions';
+import axios from 'axios';
+import { headers } from 'next/headers';
 
 
 
 
 export const LoginForm = () => {
     const router = useRouter()
-
+    
     // State to manage the visibility of the password
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
+    
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -50,8 +54,28 @@ export const LoginForm = () => {
             setIsLoading(false)
             toast.error("Incorrect username or password.")
         } else {
-            router.push("/chat")
-            toast.success("Login Successful")
+            const session = await getSession(); // Fetch the updated session
+
+            if(session){
+                const user = session.user as ExtendedUser
+                const accessToken = user.access_token
+
+                try {
+                    const chatSessionResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/chat/chat-session`, {},
+                    {
+                        headers : {
+                            "Authorization" : `Bearer ${accessToken}`
+                        }
+                    })
+                    const chatSessionResponseData = chatSessionResponse.data.data
+                    const chatSessionId = chatSessionResponseData.id
+                    router.push(`chat/${chatSessionId}`)
+                    toast.success("Login Successful")
+                } catch (error: any) {
+                    const message = error.response?.data?.message || error.response?.data?.data || "An unexpected error occurred.";
+                    toast.error(message)
+                }
+            }
         }
     }
 

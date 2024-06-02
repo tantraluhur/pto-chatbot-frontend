@@ -6,7 +6,7 @@ type HeaderSectionProps = {
 
 export const HeaderSection: React.FC<HeaderSectionProps> = ( {handleOpenSideBar} ) => {
     return(
-    <div className="flex gap-4 ml-2 mt-2">
+    <div className="flex gap-4 mt-2">
         <button onClick={handleOpenSideBar} className="sm:hidden">
             <Image 
             width={18}

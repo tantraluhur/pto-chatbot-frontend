@@ -2,7 +2,6 @@ import { CarouselSection, LoginForm } from '@/components/login/components';
 import React from 'react';
 import { useMediaQuery } from '@mui/material';
 import { EmblaOptionsType } from 'embla-carousel'
-import {signIn} from 'next-auth/react'
 
 const LoginSection = () => {
   const isDesktop = useMediaQuery('(min-width: 768px)');

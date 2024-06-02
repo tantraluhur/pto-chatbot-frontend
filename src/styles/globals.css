@@ -75,7 +75,11 @@ button.mob {
 }
 
 .pto-sidebar {
-  transition: width 0.3s;
+  transition: width 0.5s;
+}
+
+.chat-section {
+  transition: width 1s;
 }
 
 .gradient {

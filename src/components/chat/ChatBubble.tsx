@@ -22,8 +22,8 @@ export const ChatBubble: React.FC<Message> = (item) => {
                         </div>
                         :
                         <div className="w-auto  text-wrap break-words 
-                        max-w-xl h-auto bg-[#F3F3F3] rounded-r-[30px] rounded-tl-[30px] 
-                        p-3 px-5 font-semibold flex justify-center items-center">
+                        max-w-xl h-auto bg-[#DCE7F0] rounded-r-[30px] rounded-tl-[30px] 
+                        p-3 px-5 font-semibold">
                             {item.messageBot}
                         </div>
                     }
