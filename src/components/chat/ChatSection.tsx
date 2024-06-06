@@ -38,13 +38,20 @@ export const ChatSection = ({id}: {id?: string | string[]}) => {
             )
             const messageResponseData = messageResponse.data.data
             const botMessage = messageResponseData.bot_message
+            const imageBot = messageResponseData.image
             setMessages(messages => {
                 const updatedMessages = messages.map((msg, idx) => 
-                    idx === messages.length - 1 ? { ...msg, messageBot: botMessage, typing: false } : msg
+                    idx === messages.length - 1 ? { ...msg, messageBot: botMessage, imageBot: imageBot, typing: false } : msg
                 );
                 return updatedMessages;
             });
         } catch (error: any) {
+            setMessages(messages => {
+                const updatedMessages = messages.map((msg, idx) => 
+                    idx === messages.length - 1 ? { ...msg, messageBot: "An unexpected error occurred", imageBot: "", typing: false } : msg
+                );
+                return updatedMessages;
+            });
             const message = error.response?.data?.message || error.response?.data?.data || "An unexpected error occurred.";
             toast.error(message)
         }
@@ -59,6 +66,7 @@ export const ChatSection = ({id}: {id?: string | string[]}) => {
             const mappingMessages = messages.map((msg:any) => ({
                 "messageUser": msg.user_message,
                 "messageBot": msg.bot_message,
+                "imageBot": msg.image,
                 "typing": false
             }))
             setMessages(mappingMessages)

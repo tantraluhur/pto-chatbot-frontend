@@ -33,7 +33,7 @@ export const Client = (): AxiosInstance => {
             const status = error.response?.status
             if  (status === 401) {
               setTimeout(() => {
-                // signOut({callbackUrl: '/', redirect:true})
+                signOut({callbackUrl: '/', redirect:true})
               }, 1000)
             }
 
